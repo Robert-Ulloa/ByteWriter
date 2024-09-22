@@ -8,7 +8,6 @@
     "start": "npm run build && npm run server",
     "server": "node server.js",
     "build": "webpack --mode production",
-    "install": "cd client && npm install",
     "client": "webpack serve --open"
   },
   "keywords": [],
