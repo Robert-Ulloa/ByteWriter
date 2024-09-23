@@ -12,38 +12,33 @@ module.exports = () => {
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist'),  
     },
     plugins: [
-      //create the intex.html in the dist forlder
       new HtmlWebpackPlugin({
-        template: './intex.html',
-        title: ' J.A.T.E',
+        template: './index.html',
+        title: 'JATE',
       }),
-      // Injects the custom service worker with workbox
-      new InjectManifest({
-        swSrc: ' ./src-sw.js',
-        swDest: 'service-worker.js',
-      }),
-      // creaate a manifest.json  file for rwa
+      // PWA manifest generation
       new WebpackPwaManifest({
-        name: 'Just another Text Edithor',
+        name: 'JATE - Just Another Text Editor',
         short_name: 'JATE',
-        descriptioni: 'Text editor that works offline!',
-        backgrounf_color:'#ffffff',
-        theme_color: '#31a9e1',
-        start_url: '/',
-        publicPath: '/',
+        description: 'A simple text editor',
+        background_color: '#ffffff',
+        crossorigin: 'use-credentials', 
         icons: [
           {
-            src: path.resolve('src/images/logo.png'),
-            sizes: [96, 128, 192, 256, 384, 512], // Multiple sizes
+            src: path.resolve('src/assets/icons/icon.png'),  // Ensure this path is correct
+            sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
         ],
       }),
+      new InjectManifest({
+        swSrc: './src-sw.js', 
+        swDest: 'service-worker.js',
+      }),
     ],
-
     module: {
       rules: [
         {
@@ -52,10 +47,13 @@ module.exports = () => {
         },
         {
           test: /\.m?js$/,
-          exclude: /node_module/,
+          exclude: /node_modules/,
           use: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
           },
         },
       ],
