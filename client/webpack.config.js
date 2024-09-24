@@ -1,39 +1,44 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const path = require('path');
+const { InjectManifest } = require('workbox-webpack-plugin');
+
 module.exports = () => {
   return {
     mode: 'development',
     entry: {
-      main: './client/src/js/index.js',  // update the path
-      install: './client/src/js/install.js'  // update the path
+      main: './src/js/index.js',
+      install: './src/js/install.js',
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'client/dist'),  // Update output to client/dist
+      path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './client/index.html',  // update path to client folder
-        title: 'JATE',
+        template: './index.html',
+        title: 'ByteWriter',
       }),
       new WebpackPwaManifest({
-        name: 'JATE - Just Another Text Editor',
-        short_name: 'JATE',
-        description: 'A simple text editor',
+        name: 'ByteWriter - A Text Editor',
+        short_name: 'ByteWriter',
+        description: 'A simple text editor PWA',
         background_color: '#ffffff',
-        theme_color: '#ffffff', 
-        start_url: './',  
+        theme_color: '#31a9e1',
+        start_url: './',
         display: 'standalone',
         crossorigin: 'use-credentials', 
         icons: [
           {
-            src: path.resolve('client/src/images/logo.png'),  // update the icon path
+            src: path.resolve('client/src/images/logo.png'), 
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
         ],
       }),
       new InjectManifest({
-        swSrc: './client/src-sw.js',  // fix path to client/src-sw.js
-        swDest: 'service-worker.js',
+        swSrc: './src-sw.js', 
+        swDest: 'service-worker.js', 
       }),
     ],
     module: {
