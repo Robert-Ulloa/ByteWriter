@@ -16,7 +16,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html',
+        template: './index.html',  
         title: 'JATE',
       }),
       // PWA manifest generation
@@ -25,17 +25,20 @@ module.exports = () => {
         short_name: 'JATE',
         description: 'A simple text editor',
         background_color: '#ffffff',
+        theme_color: '#ffffff', 
+        start_url: './',  
+        display: 'standalone',
         crossorigin: 'use-credentials', 
         icons: [
           {
-            src: path.resolve('src/assets/icons/icon.png'),  // Ensure this path is correct
+            src: path.resolve('src/images/logo.png'),  
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
         ],
       }),
       new InjectManifest({
-        swSrc: './src-sw.js', 
+        swSrc: './src-sw.js',  
         swDest: 'service-worker.js',
       }),
     ],
