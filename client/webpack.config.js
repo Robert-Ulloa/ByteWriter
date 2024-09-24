@@ -1,25 +1,19 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
-const path = require('path');
-const { InjectManifest } = require('workbox-webpack-plugin');
-
 module.exports = () => {
   return {
     mode: 'development',
     entry: {
-      main: './src/js/index.js',
-      install: './src/js/install.js'
+      main: './client/src/js/index.js',  // update the path
+      install: './client/src/js/install.js'  // update the path
     },
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),  
+      path: path.resolve(__dirname, 'client/dist'),  // Update output to client/dist
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html',  
+        template: './client/index.html',  // update path to client folder
         title: 'JATE',
       }),
-      // PWA manifest generation
       new WebpackPwaManifest({
         name: 'JATE - Just Another Text Editor',
         short_name: 'JATE',
@@ -31,14 +25,14 @@ module.exports = () => {
         crossorigin: 'use-credentials', 
         icons: [
           {
-            src: path.resolve('src/images/logo.png'),  
+            src: path.resolve('client/src/images/logo.png'),  // update the icon path
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
         ],
       }),
       new InjectManifest({
-        swSrc: './src-sw.js',  
+        swSrc: './client/src-sw.js',  // fix path to client/src-sw.js
         swDest: 'service-worker.js',
       }),
     ],
