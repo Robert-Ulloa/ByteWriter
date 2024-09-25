@@ -25,12 +25,12 @@ module.exports = () => {
         description: 'A simple text editor PWA',
         background_color: '#ffffff',
         theme_color: '#31a9e1',
-        start_url: './',
+        start_url: '/',
         display: 'standalone',
         crossorigin: 'use-credentials', 
         icons: [
           {
-            src: path.resolve('client/src/images/logo.png'), 
+            src: path.resolve('./src/images/logo.png'), 
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
