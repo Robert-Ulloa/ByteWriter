@@ -1,8 +1,11 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const path = require('path');  
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 module.exports = () => {
   return {
-    mode: 'development',
+    mode: 'production',  
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js',
@@ -24,7 +27,7 @@ module.exports = () => {
         theme_color: '#31a9e1',
         start_url: '/',
         display: 'standalone',
-        crossorigin: 'use-credentials',
+        crossorigin: 'use-credentials', 
         icons: [
           {
             src: path.resolve('./src/images/logo.png'),
@@ -36,12 +39,6 @@ module.exports = () => {
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'service-worker.js',
-      }),
-      new CopyWebpackPlugin({
-        patterns: [
-          { from: 'client/public/manifest.json', to: 'dist/manifest.json' },
-          { from: 'client/public/favicon.ico', to: 'dist/favicon.ico' },
-        ],
       }),
     ],
     module: {
