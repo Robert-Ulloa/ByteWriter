@@ -106,4 +106,5 @@ Here is a screenshot of the IndexedDB storage:
 This project includes code from the starter code by © 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved. I modified and improved it to make the app fully functional as a PWA.
 
 Special thanks to ChatGPT, which helped explore better code options and troubleshoot errors.
+As well I took the miniproject of the week as a reference for this Activity.
 
