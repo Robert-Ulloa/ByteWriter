@@ -101,6 +101,15 @@ Here is a screenshot of the IndexedDB storage:
 
 ![IndexedDB Screenshot](assets/5.png)
 
+## Questions
+  For any questions, please contact me with the information below:
+  
+  GitHub: [Robert-Ulloa](https://github.com/Robert-Ulloa)
+  
+  Email: [roanuc8@gmail.com](mailto:roanuc8@gmail.com)
+  
+  LinkedIn: [https://www.linkedin.com/in/roberto-ulloa-30135b317/ ](https://www.linkedin.com/in/roberto-ulloa-30135b317/ )
+
 ## License and Credits
 
 This project includes code from the starter code by © 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved. I modified and improved it to make the app fully functional as a PWA.
